@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Auth Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Supabase 클라이언트 라이브러리 로드 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="auth-screen" class="screen">
+            <div class="auth-container">
+                <p>데이터베이스 연동 회원가입/로그인 데모</p>
+                
+                <!-- 로그인 폼 -->
+                <div id="login-form" class="auth-form">
+                    <h2>로그인</h2>
+                    <form id="login">
+                        <input type="email" id="login-email" placeholder="이메일을 입력하세요" required>
+                        <input type="password" id="login-password" placeholder="비밀번호를 입력하세요" required>
+                        <button type="submit">로그인</button>
+                    </form>
+                    <p>계정이 없으신가요? <a href="#" id="show-signup">회원가입하기</a></p>
+                </div>
+                <div id="signup-form" class="auth-form hidden">
+                    <h2>회원가입</h2>
+                    <form id="signup">
+                        <input type="email" id="signup-email" placeholder="이메일을 입력하세요" required>
+                        <input type="password" id="signup-password" placeholder="비밀번호를 입력하세요" required>
+                        <input type="text" id="signup-nickname" placeholder="닉네임을 입력하세요" required>
+                        <button type="submit">회원가입</button>
+                    </form>
+                    <p>이미 계정이 있으신가요? <a href="#" id="show-login">로그인하기</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-screen" class="screen hidden">
+            <div class="success-container">
+                <h1>🎉 로그인 성공!</h1>
+                <div class="user-info">
+                    <h2>환영합니다, <span id="user-nickname"></span>님!</h2>
+                    <p>데이터베이스 연동이 성공적으로 완료되었습니다.</p>
+                </div>
+                
+                <div class="success-details">
+                    <h3>✅ 완료된 작업들:</h3>
+                    <ul>
+                        <li>사용자 회원가입 (데이터베이스 저장)</li>
+                        <li>사용자 로그인 (데이터베이스 조회)</li>
+                        <li>사용자 정보 표시</li>
+                    </ul>
+                </div>
+
+                <div class="user-data">
+                    <h3>📊 사용자 정보:</h3>
+                    <div id="user-details">
+                        <!-- 사용자 정보가 여기에 동적으로 표시됩니다 -->
+                    </div>
+                </div>
+
+                <button id="logout-btn" class="logout-btn">로그아웃</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <!-- JavaScript 파일들 로드 -->
+    <!-- ======================================== -->
+    <script src="js/db.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
